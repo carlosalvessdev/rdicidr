@@ -1,0 +1,38 @@
+name: CI rdicidr
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 15.x ]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Install dependencies 
+        run: npm install
+      
+      - name: Linter (ESLint)
+        run: npm run lint
+
+      - name: Formatter (Prettier)
+        run: npm run prettier
+
+      - name: Test (Jest)
+        run: npm run test
+
+      - name: Build
+        run: npm run build
