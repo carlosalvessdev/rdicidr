@@ -61,6 +61,6 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
-        passphrase: ${{ secrets.KEYPAIR_SERVER }}
+        key: ${{ secrets.KEYPAIR_SERVER }}
         port: 22
         script: docker rm -f $(docker ps -aq --filter name=rdicidr-test) ; docker run -d -p 8080:80 --restart=always --name rdicidr-test public.ecr.aws/l7r0b8r4/rdicidr-test
