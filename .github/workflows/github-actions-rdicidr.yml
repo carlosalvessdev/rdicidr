@@ -54,13 +54,14 @@ jobs:
           docker tag rdicidr-test:latest $ECR_REGISTRY:$IMAGE_TAG
           docker push $ECR_REGISTRY:$IMAGE_TAG
   deploy:
-    needs: build
+    # needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using password
+    - name: Deploy
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
+        username: ec2-user
         key: ${{ secrets.KEYPAIR_SERVER }}
         port: 22
-        script: docker rm -f $(docker ps -aq --filter name=rdicidr-test) ; docker run -d -p 8080:80 --restart=always --name rdicidr-test public.ecr.aws/l7r0b8r4/rdicidr-test
+        script: "docker rm -f $(docker ps -aq --filter name=rdicidr-test) ; docker run -d -p 8080:80 --restart=always --name rdicidr-test public.ecr.aws/l7r0b8r4/rdicidr-test"
