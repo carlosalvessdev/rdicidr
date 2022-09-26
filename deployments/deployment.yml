@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rdicidr-deployment
+  labels:
+    app: rdicidr
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rdicidr
+  template:
+    metadata:
+      labels:
+        app: rdicidr
+    spec:
+      containers:
+      - name: rdicidr-test
+        image: public.ecr.aws/l7r0b8r4/rdicidr-test:latest
+        env: 
+        - name: MY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: rdicidr-secret
+              key: password
+        ports:
+        - containerPort: 80
