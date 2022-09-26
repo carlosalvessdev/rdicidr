@@ -54,7 +54,7 @@ jobs:
           docker tag rdicidr-test:latest $ECR_REGISTRY:$IMAGE_TAG
           docker push $ECR_REGISTRY:$IMAGE_TAG
   deploy:
-    # needs: build
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Deploy
