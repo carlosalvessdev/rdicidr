@@ -49,6 +49,7 @@ jobs:
           ECR_REGISTRY: public.ecr.aws/l7r0b8r4/rdicidr-test
           IMAGE_TAG: latest
         run: |
+          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/l7r0b8r4
           docker build -t rdicidr-test .
           docker tag rdicidr-test:latest $ECR_REGISTRY:$IMAGE_TAG
           docker push $ECR_REGISTRY:$IMAGE_TAG
