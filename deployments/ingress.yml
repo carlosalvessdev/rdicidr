@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: rdicidr-ingress
 spec:
+  ingressClassName: nginx
   rules:
   - host: "fsl-challenge.me"
     http:
