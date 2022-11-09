@@ -1,5 +1,7 @@
 FROM nginx:stable-alpine
 #teste 1
+#teste 2
+
 
 WORKDIR /usr/share/nginx/html
 
