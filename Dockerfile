@@ -1,4 +1,5 @@
 FROM nginx:stable-alpine
+#testando git beto
 #testando git churupita
 
 WORKDIR /usr/share/nginx/html
