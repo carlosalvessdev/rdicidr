@@ -1,6 +1,7 @@
 FROM nginx:stable-alpine
 #testando git beto
 #testando git churupita
+#testingg
 
 
 #teste que vai
