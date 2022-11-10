@@ -3,6 +3,11 @@ FROM nginx:stable-alpine
 #testando git churupita
 
 ##ASKDOASKSOAADK
+#testingg
+
+
+#teste que vai
+#teste que não vai
 WORKDIR /usr/share/nginx/html
 
 COPY build /usr/share/nginx/html
